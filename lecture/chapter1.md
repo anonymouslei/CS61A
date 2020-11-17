@@ -90,3 +90,32 @@ python3 -m doctest <python_source_file>
 ```
 A test that applies a single function is called a _unit_ test.
 Exhaustive unit testing is a hanllmark of good program design.
+
+##Chapter 1.6
+Two big ideas in computer science.
+First, naming and functions allow us to abstract wawy a vast amount of complexity.
+While each function definition has been trivial,
+the computational process set in motion by our evaluation procedure is quiteintircate.
+Second, it is only be virtue of the face that we have an extremely general evaluation procedure for the python language that small components can be composed into complex processes.
+
+### currying
+We can use higher-order functions to convert a function that takes multiple arguments into a chain of functions that each takes a single argument.
+This transformation is called currying.
+In python,
+currying is useful when we require a function that takes in only a single argument.
+For example,
+the map pattern applies a single-argument function to sequence of values.
+```python
+def curried_pow(x):
+    def h(y):
+        return pow(x,y)
+    return h
+
+def map_to_range(start, end, f):
+    while start < end:
+        print(f(start))
+        start = start + 1
+
+map_to_range(0, 10, curried_pow(2))
+```
+
